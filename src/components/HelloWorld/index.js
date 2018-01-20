@@ -3,7 +3,9 @@ import './index.css';
 
 const HelloWorld = (props) => {
     return (
-        <h1>Hello World Component</h1>
+        <div className="parent">
+            <h1 className="child">Hello World Component</h1>
+        </div>
     )
 }
  
