@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Button, Grid, Col } from 'react-bootstrap';
+import HelloWorld from 'components/HelloWorld';
 import * as weatherActions from "../actions/weather";
 import * as notificationActions from "../actions/notification";
 
@@ -18,14 +18,13 @@ class Weather extends Component {
 
   render() {
     return (
-      <Grid>
-        <Col >
-          <p>{ this.props.weather.name }</p>
-          <p>{ this.props.notification.message }</p>
-          <Button onClick={this.init.bind(this)}>Get Weather</Button>
-          <Button onClick={this.addNotification.bind(this)}>Notification</Button>
-        </Col>
-      </Grid>
+      <div>
+        <HelloWorld />
+        <p>{ this.props.weather.name }</p>
+        <p>{ this.props.notification.message }</p>
+        <button onClick={this.init.bind(this)}>Get Weather</button>
+        <button onClick={this.addNotification.bind(this)}>Notification</button>
+      </div>
     );
   }
 }
