@@ -1,7 +1,12 @@
 .parent {
-    color: red;
+  color: red;
 
-    & .child {
-        color: green;
-    }
+  & .child {
+    color: green;
+  }
+}
+
+.box {
+  border: 1px solid red;
+  height: 100px;
 }
