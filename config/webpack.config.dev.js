@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const cssConfig = require('./css.variables');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -11,6 +10,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const postcssConfig = require('./postcss.config');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -175,12 +175,7 @@ module.exports = {
                   plugins: () => [
                     require('postcss-smart-import'),
                     require('postcss-cssnext')({
-                      features: {
-                        autoprefixer: true,
-                        customProperties: {
-                          variables: cssConfig,
-                        },
-                      },
+                      features: postcssConfig,
                     }),
                     require('postcss-nested'),
                     require('postcss-flexbugs-fixes'),
