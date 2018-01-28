@@ -1,3 +1,5 @@
+@import "variables.css";
+
 .parent {
   color: red;
 
@@ -9,4 +11,8 @@
 .box {
   border: 1px solid red;
   height: 100px;
+}
+
+.test {
+  color: var(--mainColor);
 }

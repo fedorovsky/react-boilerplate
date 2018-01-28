@@ -173,6 +173,7 @@ module.exports = {
                 options: {
                   ident: 'postcss',
                   plugins: () => [
+                    require('postcss-smart-import'),
                     require('postcss-cssnext'),
                     require('postcss-flexbugs-fixes'),
                   ],

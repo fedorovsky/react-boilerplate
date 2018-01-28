@@ -9,10 +9,11 @@ const HelloWorld = (props) => {
           <Grid>
             <Row>
               <Col xs={12} md={6}>
-                <div className={styles.box}></div>
+                <div className={styles.box} />
+                <p className={styles.test}>test variable</p>
               </Col>
               <Col xs={12} md={6}>
-                <div className={styles.box}></div>
+                <div className={styles.box} />
               </Col>
             </Row>
           </Grid>
