@@ -1,7 +1,7 @@
 'use strict';
 
-const autoprefixer = require('autoprefixer');
 const path = require('path');
+const cssConfig = require('./css.variables');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -193,7 +193,14 @@ module.exports = {
                         ident: 'postcss',
                         plugins: () => [
                           require('postcss-smart-import'),
-                          require('postcss-cssnext'),
+                          require('postcss-cssnext')({
+                            features: {
+                              autoprefixer: true,
+                              customProperties: {
+                                variables: cssConfig,
+                              },
+                            },
+                          }),
                           require('postcss-nested'),
                           require('postcss-flexbugs-fixes'),
                         ],
