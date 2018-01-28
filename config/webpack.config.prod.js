@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const cssConfig = require('./css.variables');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -11,6 +10,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
+const postcssConfig = require('./postcss.config');
 const getClientEnvironment = require('./env');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -194,12 +194,7 @@ module.exports = {
                         plugins: () => [
                           require('postcss-smart-import'),
                           require('postcss-cssnext')({
-                            features: {
-                              autoprefixer: true,
-                              customProperties: {
-                                variables: cssConfig,
-                              },
-                            },
+                            features: postcssConfig,
                           }),
                           require('postcss-nested'),
                           require('postcss-flexbugs-fixes'),
