@@ -35,6 +35,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
+    "postcss-nested": "^3.0.0",
     "postcss-smart-import": "^0.7.6",
     "precss": "^3.0.0",
     "promise": "8.0.1",
