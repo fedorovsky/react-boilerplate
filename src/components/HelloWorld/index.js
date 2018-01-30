@@ -8,11 +8,25 @@ const HelloWorld = (props) => {
             <h1 className={styles.child}>Hello World Component</h1>
           <Grid>
             <Row>
-              <Col xs={12} md={6}>
+              <Col xs={12} md={6} lg={12}>
                 <div className={styles.box} />
-                <p className={styles.test}>test variable</p>
               </Col>
-              <Col xs={12} md={6}>
+              <Col xs={12} md={6} lg={6}>
+                <div className={styles.box} />
+              </Col>
+              <Col xs={12} md={6} lg={6}>
+                <div className={styles.box} />
+              </Col>
+              <Col xs={12} md={6} lg={4}>
+                <div className={styles.box} />
+              </Col>
+              <Col xs={12} md={6} lg={4}>
+                <div className={styles.box} />
+              </Col>
+              <Col xs={12} md={6} lg={4}>
+                <div className={styles.box} />
+              </Col>
+              <Col xs={12} md={6} lg={10} lgOffset={1}>
                 <div className={styles.box} />
               </Col>
             </Row>
