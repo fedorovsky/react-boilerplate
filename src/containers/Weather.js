@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import HelloWorld from 'components/HelloWorld';
-import * as weatherActions from "../actions/weather";
-import * as notificationActions from "../actions/notification";
+import Filters from 'components/Filters';
+import ArticlesList from 'components/ArticleList';
+import * as weatherActions from "actions/weather";
+import * as notificationActions from "actions/notification";
 
 class Weather extends Component {
   init() {
@@ -19,6 +21,8 @@ class Weather extends Component {
   render() {
     return (
       <div>
+        <Filters />
+        <ArticlesList />
         <HelloWorld />
         <p>{ this.props.weather.name }</p>
         <p>{ this.props.notification.message }</p>

@@ -6,4 +6,6 @@ export default keyMirror({
   GET_WEATHER_ERROR: null,
 
   ADD_NOTIFICATION_MESSAGE: null,
+
+  DELETE_ARTICLE: null,
 })
