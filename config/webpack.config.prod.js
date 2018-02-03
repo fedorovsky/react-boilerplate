@@ -43,7 +43,7 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
+  { publicPath: Array(cssFilename.split('/').length).join('../') }
   : {};
 
 // This is the production configuration.
@@ -167,6 +167,7 @@ module.exports = {
           // in the main CSS file.
           {
             test: /\.css$/,
+            include: paths.appSrc,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -206,7 +207,48 @@ module.exports = {
                 extractTextPluginOptions
               )
             ),
-            // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },
+          {
+            test: /\.css$/,
+            exclude: paths.appSrc,
+            loader: ExtractTextPlugin.extract(
+              Object.assign(
+                {
+                  fallback: {
+                    loader: require.resolve('style-loader'),
+                    options: {
+                      hmr: false,
+                    },
+                  },
+                  use: [
+                    {
+                      loader: require.resolve('css-loader'),
+                      options: {
+                        importLoaders: 1,
+                        minimize: true,
+                        localIdentName: "[hash:base64:8]",
+                        sourceMap: shouldUseSourceMap,
+                      },
+                    },
+                    {
+                      loader: require.resolve('postcss-loader'),
+                      options: {
+                        ident: 'postcss',
+                        plugins: () => [
+                          require('postcss-smart-import'),
+                          require('postcss-cssnext')({
+                            features: postcssConfig,
+                          }),
+                          require('postcss-nested'),
+                          require('postcss-flexbugs-fixes'),
+                        ],
+                      },
+                    },
+                  ],
+                },
+                extractTextPluginOptions
+              )
+            ),
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.

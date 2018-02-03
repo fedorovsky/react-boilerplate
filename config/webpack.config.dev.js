@@ -158,6 +158,7 @@ module.exports = {
           // in development "style" loader enables hot editing of CSS.
           {
             test: /\.css$/,
+            include: paths.appSrc,
             use: [
               require.resolve('style-loader'),
               {
@@ -165,6 +166,34 @@ module.exports = {
                 options: {
                   importLoaders: 1,
                   modules: true,
+                  localIdentName: "[path]-[local]"
+                },
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-smart-import'),
+                    require('postcss-cssnext')({
+                      features: postcssConfig,
+                    }),
+                    require('postcss-nested'),
+                    require('postcss-flexbugs-fixes'),
+                  ],
+                },
+              },
+            ],
+          },
+          {
+            test: /\.css$/,
+            exclude: paths.appSrc,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
                   localIdentName: "[path]-[local]"
                 },
               },
