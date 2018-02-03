@@ -23,6 +23,7 @@ class Filters extends Component {
     return (
       <Select
         options={options}
+        multi={true}
         onChange={this.handleChange}
       />
     )
