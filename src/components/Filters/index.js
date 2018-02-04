@@ -1,29 +1,38 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import 'react-select/dist/react-select.css'
+import { changeSelection } from 'actions/filters'
+import { getArticlesSelector, getFilterSelected } from 'selectors';
+import 'react-select/dist/react-select.css';
+import styles from './index.css';
 
 class Filters extends Component {
-  handleChange = (value) => {
-    console.log(value);
+  static propTypes = {
+    // from redux
+    changeSelection: propTypes.func.isRequired,
+  };
+
+  handleChange = (selectedOption) => {
+    this.props.changeSelection(selectedOption || {});
   };
 
   render() {
-    const options = [
-      {
-        label: 'label-1',
-        value: 'first',
-      },
-      {
-        label: 'label-2',
-        value: 'second',
-      },
-    ];
+    console.log(this.props);
+    const { articles, selected } = this.props;
+
+    const optionsMap = articles.map((article) => {
+      return {
+        label: article.category,
+        value: article.category,
+      }
+    });
 
     return (
       <Select
-        options={options}
-        multi={true}
+        className={styles.select}
+        value={selected.value}
+        options={optionsMap}
         onChange={this.handleChange}
       />
     )
@@ -31,7 +40,12 @@ class Filters extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    selected: getFilterSelected(state),
+    articles: getArticlesSelector(state),
+  }
 };
 
-export default connect(mapStateToProps)(Filters);
+export default connect(mapStateToProps, {
+  changeSelection
+})(Filters);

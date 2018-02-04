@@ -8,4 +8,6 @@ export default keyMirror({
   ADD_NOTIFICATION_MESSAGE: null,
 
   DELETE_ARTICLE: null,
+
+  CHANGE_SELECTION: null,
 })

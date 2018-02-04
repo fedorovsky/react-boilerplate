@@ -1,1 +1,6 @@
+.select {
+  & :global .Select-control {
+    border: 1px solid red;
+  }
+}
 
