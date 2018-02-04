@@ -18,15 +18,32 @@ class Filters extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { articles, selected } = this.props;
 
-    const optionsMap = articles.map((article) => {
+    let used = {};
+    const optionsMap = articles.filter((article) => {
+      let obj = null;
+      if(article.category in used){
+        obj = true;
+      } else {
+        used[article.category] = 1;
+        obj = false;
+      }
+      return obj;
+    }).map((article) => {
       return {
         label: article.category,
         value: article.category,
       }
     });
+
+    // optionsMap:
+    // {
+    //   label: 'Label',
+    //   value: 'Value',
+    // }
+
+    console.log('-----', optionsMap, used);
 
     return (
       <Select
