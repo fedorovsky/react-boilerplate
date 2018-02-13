@@ -2,3 +2,7 @@
 
     yarn install
     yarn start
+
+## List of packages
+* [react-redux](https://github.com/reactjs/react-redux)
+* [redux-thunk](https://github.com/gaearon/redux-thunk)
