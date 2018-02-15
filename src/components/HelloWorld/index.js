@@ -10,7 +10,6 @@ const HelloWorld = (props) => {
         <Row>
           <Col xs={12} md={6} lg={12}>
             <div className={styles.box}/>
-            <h2>{props.title}</h2>
           </Col>
           <Col xs={12} md={6} lg={6}>
             <div className={styles.box}/>
