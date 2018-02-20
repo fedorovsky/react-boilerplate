@@ -64,7 +64,7 @@
     "start": "concurrently \"npm run dev\" \"npm run api\"",
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "api": "json-server --watch api/db.json --port 3001",
+    "api": "json-server --watch --port 3001 api/db.json",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
