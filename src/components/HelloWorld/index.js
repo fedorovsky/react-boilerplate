@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Row, Col} from 'components/Grid';
+import { Grid, Row, Col } from 'components/Grid';
 import styles from './index.css';
 
 const HelloWorld = (props) => {

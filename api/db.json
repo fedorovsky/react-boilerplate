@@ -1,0 +1,37 @@
+{
+  "posts": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id."
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "title": "qui est esse",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id."
+    },
+    {
+      "userId": 1,
+      "id": 3,
+      "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id."
+    },
+    {
+      "userId": 1,
+      "id": 4,
+      "title": "eum et est occaecati",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id."
+    },
+    {
+      "userId": 1,
+      "id": 5,
+      "title": "nesciunt quas odio",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id."
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
