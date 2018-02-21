@@ -7,7 +7,7 @@ import * as notificationActions from "../actions/notification";
 
 class Weather extends Component {
   init() {
-      this.props.actions.weather.initialWeather('Kharkiv');
+    this.props.actions.weather.initialWeather('Kharkiv');
   }
 
   addNotification() {

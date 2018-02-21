@@ -4,5 +4,5 @@ export const addMessage = (message) => (dispatch) => {
   dispatch({
     type: types.ADD_NOTIFICATION_MESSAGE,
     message
-  })
+  });
 };

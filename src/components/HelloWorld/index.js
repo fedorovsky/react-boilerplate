@@ -32,7 +32,7 @@ const HelloWorld = (props) => {
         </Row>
       </Grid>
     </div>
-  )
+  );
 };
 
 export default HelloWorld;

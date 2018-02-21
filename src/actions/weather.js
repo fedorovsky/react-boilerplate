@@ -14,12 +14,12 @@ export const initialWeather = (city) => (dispatch) => {
       dispatch({
         type: types.GET_WEATHER_SUCCESS,
         weather: response.data,
-      })
+      });
     })
     .catch((response) => {
       dispatch({
         type: types.GET_WEATHER_ERROR,
         weather: response.data,
-      })
-    })
+      });
+    });
 };
