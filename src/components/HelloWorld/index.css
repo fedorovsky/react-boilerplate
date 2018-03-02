@@ -4,7 +4,7 @@
   color: red;
 
   .child {
-    color: green;
+    color: var(--mainColor);
   }
 }
 
