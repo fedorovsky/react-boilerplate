@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,7 +8,6 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
-const postcssConfig = require('./postcss.config');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -172,15 +169,9 @@ module.exports = {
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-smart-import'),
-                    require('postcss-cssnext')({
-                      features: postcssConfig,
-                    }),
-                    require('postcss-nested'),
-                    require('postcss-flexbugs-fixes'),
-                  ],
+                  config: {
+                    path: './config/postcss.config.js',
+                  },
                 },
               },
             ],
@@ -200,15 +191,9 @@ module.exports = {
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-smart-import'),
-                    require('postcss-cssnext')({
-                      features: postcssConfig,
-                    }),
-                    require('postcss-nested'),
-                    require('postcss-flexbugs-fixes'),
-                  ],
+                  config: {
+                    path: './config/postcss.config.js',
+                  },
                 },
               },
             ],
