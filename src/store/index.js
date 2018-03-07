@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from 'reducers';
 
 const logger = createLogger({
-  // ...options
+  collapsed: (getState, action, logEntry) => !logEntry.error
 });
 
 export default createStore(
