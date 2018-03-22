@@ -5,15 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from 'reducers';
 
 const logger = createLogger({
-  collapsed: (getState, action, logEntry) => !logEntry.error
+  collapsed: (getState, action, logEntry) => !logEntry.error,
 });
 
 export default createStore(
   reducer,
-  composeWithDevTools(
-    applyMiddleware(
-      thunk,
-      logger
-    )
-  )
+  composeWithDevTools(applyMiddleware(
+    thunk,
+    logger,
+  )),
 );

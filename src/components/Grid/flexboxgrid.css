@@ -3,7 +3,7 @@
   --sm-gutter-width: 14px;
   --md-gutter-width: 16px;
   --lg-gutter-width: 24px;
-  --sm-container: 100%;
+  --sm-container: 730px;
   --md-container: 960px;
   --lg-container: 1368px;
   --xs-half-gutter-width: calc((var(--xs-gutter-width) * 0.5));

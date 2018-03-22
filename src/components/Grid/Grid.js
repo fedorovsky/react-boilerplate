@@ -1,32 +1,41 @@
-import React, { Component } from "react";
-import classnames from "classnames";
-import PropTypes from "prop-types";
-import flexboxgrid from "./flexboxgrid.css";
+import React from 'react';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import flexboxgrid from './flexboxgrid.css';
 
-class Grid extends Component {
-  static propTypes = {
-    fluid: PropTypes.bool,
-  };
+const propTypes = {
+  fluid: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node,
+};
 
-  render() {
-    const {
-      fluid,
-      className,
-      children,
-      ...other
-    } = this.props;
+const defaultProps = {
+  fluid: null,
+  className: null,
+  children: null,
+};
 
-    const classes = classnames({
-      [flexboxgrid["container"]]: !fluid,
-      [flexboxgrid["container-fluid"]]: fluid,
-    }, className);
+const Grid = (props) => {
+  const {
+    fluid,
+    className,
+    children,
+    ...other
+  } = props;
 
-    return (
-      <div className={ classes } { ...other }>
-        { children }
-      </div>
-    );
-  }
-}
+  const classes = classnames({
+    [flexboxgrid.container]: !fluid,
+    [flexboxgrid['container-fluid']]: fluid,
+  }, className);
+
+  return (
+    <div className={classes} {...other}>
+      { children }
+    </div>
+  );
+};
+
+Grid.propTypes = propTypes;
+Grid.defaultProps = defaultProps;
 
 export default Grid;

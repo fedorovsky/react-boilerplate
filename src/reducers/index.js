@@ -4,5 +4,5 @@ import notification from './notification';
 
 export default combineReducers({
   weather,
-  notification
+  notification,
 });
