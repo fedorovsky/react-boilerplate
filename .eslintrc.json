@@ -24,7 +24,8 @@
           ".js"
         ]
       }
-    ]
+    ],
+    "linebreak-style": "off"
   },
   "settings": {
     "import/resolver": {
