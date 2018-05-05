@@ -9,11 +9,6 @@
     "start": "concurrently \"npm run dev\" \"npm run api\"",
     "test": "node scripts/test.js --env=jsdom"
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
