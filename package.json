@@ -9,9 +9,6 @@
     "start": "concurrently \"npm run dev\" \"npm run api\"",
     "test": "node scripts/test.js --env=jsdom"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
