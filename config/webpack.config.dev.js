@@ -168,11 +168,6 @@ module.exports = {
               },
               {
                 loader: require.resolve('postcss-loader'),
-                options: {
-                  config: {
-                    path: './config/postcss.config.js',
-                  },
-                },
               },
             ],
           },
@@ -189,11 +184,6 @@ module.exports = {
               },
               {
                 loader: require.resolve('postcss-loader'),
-                options: {
-                  config: {
-                    path: './config/postcss.config.js',
-                  },
-                },
               },
             ],
           },

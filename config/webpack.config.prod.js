@@ -8,7 +8,6 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
-const postcssConfig = require('./postcss.config');
 const getClientEnvironment = require('./env');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -64,7 +63,7 @@ module.exports = {
     filename: 'static/js/[name].[chunkhash:8].js',
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
-    publicPath: publicPath,
+    publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path
@@ -78,8 +77,7 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/253
     modules: ['node_modules', paths.appNodeModules].concat(
       // It is guaranteed to exist because we tweak it in `env.js`
-      process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
-    ),
+      process.env.NODE_PATH.split(path.delimiter).filter(Boolean)),
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
@@ -166,75 +164,61 @@ module.exports = {
           {
             test: /\.css$/,
             include: paths.appSrc,
-            loader: ExtractTextPlugin.extract(
-              Object.assign(
-                {
-                  fallback: {
-                    loader: require.resolve('style-loader'),
+            loader: ExtractTextPlugin.extract(Object.assign(
+              {
+                fallback: {
+                  loader: require.resolve('style-loader'),
+                  options: {
+                    hmr: false,
+                  },
+                },
+                use: [
+                  {
+                    loader: require.resolve('css-loader'),
                     options: {
-                      hmr: false,
+                      importLoaders: 1,
+                      modules: true,
+                      minimize: true,
+                      localIdentName: '[hash:base64:8]',
+                      sourceMap: shouldUseSourceMap,
                     },
                   },
-                  use: [
-                    {
-                      loader: require.resolve('css-loader'),
-                      options: {
-                        importLoaders: 1,
-                        modules: true,
-                        minimize: true,
-                        localIdentName: "[hash:base64:8]",
-                        sourceMap: shouldUseSourceMap,
-                      },
-                    },
-                    {
-                      loader: require.resolve('postcss-loader'),
-                      options: {
-                        config: {
-                          path: './config/postcss.config.js',
-                        },
-                      },
-                    },
-                  ],
-                },
-                extractTextPluginOptions
-              )
-            ),
+                  {
+                    loader: require.resolve('postcss-loader'),
+                  },
+                ],
+              },
+              extractTextPluginOptions,
+            )),
           },
           {
             test: /\.css$/,
             exclude: paths.appSrc,
-            loader: ExtractTextPlugin.extract(
-              Object.assign(
-                {
-                  fallback: {
-                    loader: require.resolve('style-loader'),
+            loader: ExtractTextPlugin.extract(Object.assign(
+              {
+                fallback: {
+                  loader: require.resolve('style-loader'),
+                  options: {
+                    hmr: false,
+                  },
+                },
+                use: [
+                  {
+                    loader: require.resolve('css-loader'),
                     options: {
-                      hmr: false,
+                      importLoaders: 1,
+                      minimize: true,
+                      localIdentName: '[hash:base64:8]',
+                      sourceMap: shouldUseSourceMap,
                     },
                   },
-                  use: [
-                    {
-                      loader: require.resolve('css-loader'),
-                      options: {
-                        importLoaders: 1,
-                        minimize: true,
-                        localIdentName: "[hash:base64:8]",
-                        sourceMap: shouldUseSourceMap,
-                      },
-                    },
-                    {
-                      loader: require.resolve('postcss-loader'),
-                      options: {
-                        config: {
-                          path: './config/postcss.config.js',
-                        },
-                      },
-                    },
-                  ],
-                },
-                extractTextPluginOptions
-              )
-            ),
+                  {
+                    loader: require.resolve('postcss-loader'),
+                  },
+                ],
+              },
+              extractTextPluginOptions,
+            )),
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
@@ -340,7 +324,7 @@ module.exports = {
       },
       minify: true,
       // For unknown URLs, fallback to the index page
-      navigateFallback: publicUrl + '/index.html',
+      navigateFallback: `${publicUrl}/index.html`,
       // Ignores URLs starting from /__ (useful for Firebase):
       // https://github.com/facebookincubator/create-react-app/issues/2237#issuecomment-302693219
       navigateFallbackWhitelist: [/^(?!\/__).*/],
