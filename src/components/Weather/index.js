@@ -12,11 +12,11 @@ class Weather extends Component {
   };
   getWeather = () => {
     this.props.initialWeather('Kharkiv');
-  }
+  };
   render() {
     return (
       <div>
-        <p>{ this.props.weather.name }</p>
+        <p>{this.props.weather.name}</p>
         <button onClick={this.getWeather}>Get Weather</button>
       </div>
     );
@@ -31,4 +31,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { initialWeather };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Weather);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Weather);

@@ -31,29 +31,36 @@ const defaultProps = {
   children: null,
 };
 
-const Col = (props) => {
+const Col = props => {
   const {
-    xs, xsOffset,
-    sm, smOffset,
-    md, mdOffset,
-    lg, lgOffset,
+    xs,
+    xsOffset,
+    sm,
+    smOffset,
+    md,
+    mdOffset,
+    lg,
+    lgOffset,
     reverse,
     className,
     children,
     ...other
   } = props;
 
-  const classes = classnames({
-    [flexboxgrid[`${Number.isInteger(xs) ? `col-xs-${xs}` : ''}`]]: xs,
-    [flexboxgrid[`${Number.isInteger(sm) ? `col-sm-${sm}` : ''}`]]: sm,
-    [flexboxgrid[`${Number.isInteger(md) ? `col-md-${md}` : ''}`]]: md,
-    [flexboxgrid[`${Number.isInteger(lg) ? `col-lg-${lg}` : ''}`]]: lg,
-    [flexboxgrid[`col-xs-offset-${xsOffset}`]]: xsOffset,
-    [flexboxgrid[`col-sm-offset-${smOffset}`]]: smOffset,
-    [flexboxgrid[`col-md-offset-${mdOffset}`]]: mdOffset,
-    [flexboxgrid[`col-lg-offset-${lgOffset}`]]: lgOffset,
-    [flexboxgrid['col-reverse']]: reverse,
-  }, className);
+  const classes = classnames(
+    {
+      [flexboxgrid[`${Number.isInteger(xs) ? `col-xs-${xs}` : ''}`]]: xs,
+      [flexboxgrid[`${Number.isInteger(sm) ? `col-sm-${sm}` : ''}`]]: sm,
+      [flexboxgrid[`${Number.isInteger(md) ? `col-md-${md}` : ''}`]]: md,
+      [flexboxgrid[`${Number.isInteger(lg) ? `col-lg-${lg}` : ''}`]]: lg,
+      [flexboxgrid[`col-xs-offset-${xsOffset}`]]: xsOffset,
+      [flexboxgrid[`col-sm-offset-${smOffset}`]]: smOffset,
+      [flexboxgrid[`col-md-offset-${mdOffset}`]]: mdOffset,
+      [flexboxgrid[`col-lg-offset-${lgOffset}`]]: lgOffset,
+      [flexboxgrid['col-reverse']]: reverse,
+    },
+    className,
+  );
 
   return (
     <div className={classes} {...other}>

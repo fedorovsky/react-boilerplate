@@ -16,7 +16,7 @@ class Notification extends Component {
   render() {
     return (
       <div>
-        <p>{ this.props.notification.message }</p>
+        <p>{this.props.notification.message}</p>
         <button onClick={this.addNotification}>Notification</button>
       </div>
     );
@@ -29,4 +29,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { addMessage };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Notification);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Notification);

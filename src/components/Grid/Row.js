@@ -39,33 +39,45 @@ const defaultProps = {
   children: null,
 };
 
-const Row = (props) => {
+const Row = props => {
   const {
-    xsHAlign, smHAlign, mdHAlign, lgHAlign,
-    xsVAlign, smVAlign, mdVAlign, lgVAlign,
-    xsDistribution, smDistribution, mdDistribution, lgDistribution,
+    xsHAlign,
+    smHAlign,
+    mdHAlign,
+    lgHAlign,
+    xsVAlign,
+    smVAlign,
+    mdVAlign,
+    lgVAlign,
+    xsDistribution,
+    smDistribution,
+    mdDistribution,
+    lgDistribution,
     reverse,
     className,
     children,
     ...other
   } = props;
 
-  const classes = classnames({
-    [flexboxgrid.row]: !reverse,
-    [flexboxgrid['row-reverse']]: reverse,
-    [flexboxgrid[`${xsHAlign}-xs`]]: xsHAlign,
-    [flexboxgrid[`${smHAlign}-sm`]]: smHAlign,
-    [flexboxgrid[`${mdHAlign}-md`]]: mdHAlign,
-    [flexboxgrid[`${lgHAlign}-lg`]]: lgHAlign,
-    [flexboxgrid[`${xsVAlign}-xs`]]: xsVAlign,
-    [flexboxgrid[`${smVAlign}-sm`]]: smVAlign,
-    [flexboxgrid[`${mdVAlign}-md`]]: mdVAlign,
-    [flexboxgrid[`${lgVAlign}-lg`]]: lgVAlign,
-    [flexboxgrid[`${xsDistribution}-xs`]]: xsDistribution,
-    [flexboxgrid[`${smDistribution}-sm`]]: smDistribution,
-    [flexboxgrid[`${mdDistribution}-md`]]: mdDistribution,
-    [flexboxgrid[`${lgDistribution}-lg`]]: lgDistribution,
-  }, className);
+  const classes = classnames(
+    {
+      [flexboxgrid.row]: !reverse,
+      [flexboxgrid['row-reverse']]: reverse,
+      [flexboxgrid[`${xsHAlign}-xs`]]: xsHAlign,
+      [flexboxgrid[`${smHAlign}-sm`]]: smHAlign,
+      [flexboxgrid[`${mdHAlign}-md`]]: mdHAlign,
+      [flexboxgrid[`${lgHAlign}-lg`]]: lgHAlign,
+      [flexboxgrid[`${xsVAlign}-xs`]]: xsVAlign,
+      [flexboxgrid[`${smVAlign}-sm`]]: smVAlign,
+      [flexboxgrid[`${mdVAlign}-md`]]: mdVAlign,
+      [flexboxgrid[`${lgVAlign}-lg`]]: lgVAlign,
+      [flexboxgrid[`${xsDistribution}-xs`]]: xsDistribution,
+      [flexboxgrid[`${smDistribution}-sm`]]: smDistribution,
+      [flexboxgrid[`${mdDistribution}-md`]]: mdDistribution,
+      [flexboxgrid[`${lgDistribution}-lg`]]: lgDistribution,
+    },
+    className,
+  );
 
   return (
     <div className={classes} {...other}>

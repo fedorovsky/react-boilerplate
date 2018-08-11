@@ -15,22 +15,20 @@ const defaultProps = {
   children: null,
 };
 
-const Grid = (props) => {
-  const {
-    fluid,
-    className,
-    children,
-    ...other
-  } = props;
+const Grid = props => {
+  const { fluid, className, children, ...other } = props;
 
-  const classes = classnames({
-    [flexboxgrid.container]: !fluid,
-    [flexboxgrid['container-fluid']]: fluid,
-  }, className);
+  const classes = classnames(
+    {
+      [flexboxgrid.container]: !fluid,
+      [flexboxgrid['container-fluid']]: fluid,
+    },
+    className,
+  );
 
   return (
     <div className={classes} {...other}>
-      { children }
+      {children}
     </div>
   );
 };
