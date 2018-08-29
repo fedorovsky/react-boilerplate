@@ -5,8 +5,10 @@
   "scripts": {
     "api": "json-server --watch --port 3001 api/db.json",
     "build": "node scripts/build.js",
+    "build-storybook": "build-storybook",
     "dev": "node scripts/start.js",
     "start": "concurrently \"npm run dev\" \"npm run api\"",
+    "storybook": "start-storybook -p 6006",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
@@ -59,6 +61,10 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
     "autoprefixer": "^8.4.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
@@ -86,6 +92,8 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
+    "getstorybook": "^1.7.0",
+    "global": "^4.3.2",
     "html-webpack-plugin": "2.29.0",
     "jest": "^22.4.3",
     "json-server": "^0.12.1",
